@@ -19,8 +19,10 @@ st.set_page_config(page_title="AeroStream", layout="wide")
 st.title("✈️ AeroStream Analytics")
 
 placeholder = st.empty()
+counter = 0
 
 while True:
+    counter += 1
     with placeholder.container():
         df = get_data()
         
@@ -41,7 +43,7 @@ while True:
                 st.subheader("Volume par Compagnie")
                 vol = df['airline'].value_counts().reset_index()
                 vol.columns = ['Airline', 'Count']
-                st.plotly_chart(px.bar(vol, x='Airline', y='Count', color='Airline'), use_container_width=True, key="v")
+                st.plotly_chart(px.bar(vol, x='Airline', y='Count', color='Airline'), use_container_width=True, key=f"v{counter}")
             
             with col2:
                 st.subheader("Sentiments")
@@ -49,7 +51,7 @@ while True:
                 sent.columns = ['Sentiment', 'Count']
                 st.plotly_chart(px.pie(sent, values='Count', names='Sentiment', 
                     color='Sentiment', color_discrete_map={'positive':'green','neutral':'gray','negative':'red'}), 
-                    use_container_width=True, key="s")
+                    use_container_width=True, key=f"s{counter}")
             
             # Satisfaction
             st.subheader("Satisfaction par Compagnie")
@@ -57,7 +59,7 @@ while True:
             sat.columns = ['Airline', 'Satisfaction %']
             st.plotly_chart(px.bar(sat.sort_values('Satisfaction %', ascending=False), 
                 x='Airline', y='Satisfaction %', color='Satisfaction %', color_continuous_scale='RdYlGn'), 
-                use_container_width=True, key="sat")
+                use_container_width=True, key=f"sat{counter}")
             
             # Negative causes
             st.subheader("Causes Négatives (mots fréquents)")
@@ -68,7 +70,7 @@ while True:
                 words = [w for w in words if len(w)>3 and w not in stops]
                 wf = pd.Series(words).value_counts().head(10).reset_index()
                 wf.columns = ['Word', 'Count']
-                st.plotly_chart(px.bar(wf, x='Count', y='Word', orientation='h'), use_container_width=True, key="w")
+                st.plotly_chart(px.bar(wf, x='Count', y='Word', orientation='h'), use_container_width=True, key=f"w{counter}")
             
             # Recent tweets
             st.subheader("Tweets Récents")

@@ -1,0 +1,37 @@
+AEROSTREAM - JIRA PLANNING
+
+EPIC 1: Project Setup & Data Pipeline
+- AS-001: Initialize project structure
+- AS-002: Load and explore airline sentiment dataset
+- AS-003: Implement data cleaning pipeline
+
+EPIC 2: Machine Learning Model Development
+- AS-004: Generate text embeddings with SentenceTransformer
+- AS-005: Store embeddings in ChromaDB
+- AS-006: Train classification models (LogisticRegression + RandomForest)
+- AS-007: Evaluate and save best model
+
+EPIC 3: API Development
+- AS-008: Create FastAPI application
+- AS-009: Integrate model with API
+- AS-010: Dockerize Batch API
+
+EPIC 4: Streaming Pipeline
+- AS-011: Setup PostgreSQL database
+- AS-012: Implement micro-batch processing
+- AS-013: Integrate with Batch API
+
+EPIC 5: Dashboard & Visualization
+- AS-014: Create Streamlit dashboard with Plotly
+- AS-015: Implement auto-refresh mechanism
+- AS-016: Connect dashboard to PostgreSQL
+
+EPIC 6: Orchestration with Airflow
+- AS-017: Setup Airflow infrastructure
+- AS-018: Create Airflow DAG (runs every minute)
+- AS-019: Test end-to-end pipeline
+
+EPIC 7: Deployment & Documentation
+- AS-020: Create Docker Compose for Streaming
+- AS-021: Write project documentation
+- AS-022: Push to GitHub repository
