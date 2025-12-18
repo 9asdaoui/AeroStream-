@@ -1,0 +1,18 @@
+FROM python:3.11-slim
+
+WORKDIR /home/jovyan
+
+RUN pip install --no-cache-dir \
+    jupyter \
+    notebook \
+    jupyterlab \
+    pandas \
+    matplotlib \
+    seaborn \
+    datasets \
+    scikit-learn \
+    numpy
+
+EXPOSE 8888
+
+CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=", "--NotebookApp.password="]
